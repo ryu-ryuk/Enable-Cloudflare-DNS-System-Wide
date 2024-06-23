@@ -1,0 +1,62 @@
+#!/sbin/sh
+
+#################
+# Initialization
+#################
+
+umask 022
+
+# Print function for UI messages
+ui_print() {
+  echo "$1"
+}
+
+# Function to check Magisk version compatibility
+require_new_magisk() {
+  ui_print "*******************************"
+  ui_print " Please install Magisk v20.4+! "
+  ui_print "*******************************"
+  exit 1
+}
+
+#########################
+# Load util_functions.sh
+#########################
+
+# Define OUTFD, ZIPFILE from Magisk installer arguments
+OUTFD=$2
+ZIPFILE=$3
+
+# Mount /data if not already mounted
+mount /data 2>/dev/null
+
+# Check if util_functions.sh exists in Magisk path
+[ -f /data/adb/magisk/util_functions.sh ] || require_new_magisk
+
+# Source util_functions.sh
+. /data/adb/magisk/util_functions.sh
+
+# Check if Magisk version is at least v20.4
+[ $MAGISK_VER_CODE -lt 20400 ] && require_new_magisk
+
+#######################
+# Main Installation
+#######################
+
+ui_print "*******************************"
+ui_print " Installing Cloudflare DNS Module "
+ui_print "*******************************"
+
+# Install the module
+install_module
+
+# Ensure post-fs-data.sh is executable and install it
+chmod 755 $MODPATH/post-fs-data.sh
+cp -af $MODPATH/post-fs-data.sh $POSTFSDATA
+
+ui_print "*******************************"
+ui_print " Cloudflare DNS Module Installed "
+ui_print "*******************************"
+ui_print " Please Reboot  <(-.-)↘"
+# Exit with success
+exit 0
