@@ -2,6 +2,9 @@
 
 # Cloudflare DNS Magisk Module
 
+[![Telegram](https://camo.githubusercontent.com/2cf35c6bc239421a6af2b0ab7ea5eb684a9afb824460d9d702fc0688ff9ef8d2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f54656c656772616d5f537570706f72745f436861742d3243413545303f7374796c653d666f722d7468652d6261646765266c6f676f3d54656c656772616d266c6f676f436f6c6f723d464646464646)](https://t.me/internet_stuff)
+
+
 **First Release** 
 
 This Magisk module sets Cloudflare's DNS (1.1.1.1 and 1.0.0.1) system-wide on your Android device.
@@ -40,6 +43,8 @@ To verify that your DNS is set to Cloudflare's 1.1.1.1:
 3. Find the Cloudflare DNS Enabler module and tap the remove button.
 4. Reboot your device.
 
+## future updates -
+Getting "Using DNS over HTTPS (DoH)" as  *YES* !
 
 ## License
 
